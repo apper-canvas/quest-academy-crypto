@@ -16,7 +16,8 @@ const navItems = [
     { path: '/progress', label: 'My Progress', icon: 'TrendingUp' },
     { path: '/parent-dashboard', label: 'Parent Dashboard', icon: 'BarChart3' },
     { path: '/shop', label: 'Avatar Shop', icon: 'ShoppingBag' },
-    { path: '/achievements', label: 'Achievements', icon: 'Trophy' }
+    { path: '/achievements', label: 'Achievements', icon: 'Trophy' },
+    { path: '/profile', label: 'Profile', icon: 'User' }
   ]
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-sm">

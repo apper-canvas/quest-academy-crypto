@@ -75,6 +75,22 @@ if (updates.unlockedItem) {
     }
   }
   
+// Save to localStorage
+  localStorage.setItem('questAcademyUserProgress', JSON.stringify(updated))
+  
+  return updated
+}
+
+export const updateUserProfile = async (userId, profileData) => {
+  await delay(300)
+  
+  const current = await getUserProgress()
+  const updated = { 
+    ...current,
+    username: profileData.username || current.username,
+    avatar: profileData.avatar || current.avatar
+  }
+  
   // Save to localStorage
   localStorage.setItem('questAcademyUserProgress', JSON.stringify(updated))
   
