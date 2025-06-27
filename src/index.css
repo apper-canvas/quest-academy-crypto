@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'react-toastify/dist/ReactToastify.css';
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka One', cursive;
+  }
+  
+  body {
+    @apply bg-background text-gray-800;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-secondary text-white font-semibold py-3 px-6 rounded-full shadow-game hover:shadow-celebration transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-primary border-2 border-primary font-semibold py-3 px-6 rounded-full hover:bg-primary hover:text-white transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+  
+  .card-game {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-game transition-all duration-200 hover:scale-105 cursor-pointer;
+  }
+  
+  .progress-bar {
+    @apply bg-gray-200 rounded-full overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply bg-gradient-to-r from-accent to-secondary h-full rounded-full transition-all duration-500;
+  }
+}
+
+/* Toast Customization */
+.Toastify__toast-container {
+  width: auto;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.Toastify__toast {
+  border-radius: 16px;
+  padding: 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.Toastify__toast--success {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+}
+
+.Toastify__toast--error {
+  background: linear-gradient(135deg, #F44336 0%, #EF5350 100%);
+}
+
+.Toastify__toast--info {
+  background: linear-gradient(135deg, #2196F3 0%, #42A5F5 100%);
+}
+
+.Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Game Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.sparkle-animation {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #5B4CFF, #FF6B9D);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #4A3FE7, #E55A87);
+}
