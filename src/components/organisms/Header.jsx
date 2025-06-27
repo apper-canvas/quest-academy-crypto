@@ -26,13 +26,12 @@ const navItems = [
           {/* Logo */}
           <NavLink to="/" className="flex items-center gap-3">
             <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
-              <ApperIcon name="BookOpen" size={24} className="text-white" />
+<ApperIcon name="BookOpen" size={24} className="text-white" />
             </div>
             <h1 className="font-display text-xl text-gray-800 hidden sm:block">
-              Quest Academy
+              Learning Academy
             </h1>
           </NavLink>
-          
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
