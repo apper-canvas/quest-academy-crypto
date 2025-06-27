@@ -58,7 +58,4 @@ const dailyChallengesData = [
     createdAt: new Date().toISOString()
   }
 ]
-
-export default dailyChallengesData
 export { dailyChallengesData }
-export default dailyChallengesData
