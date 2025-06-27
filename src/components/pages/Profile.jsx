@@ -13,8 +13,10 @@ import { updateUserProfile } from '@/services/api/userService'
 const Profile = () => {
   const { userProgress, loading, error, refreshProgress } = useUserProgress()
   const [isEditing, setIsEditing] = useState(false)
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     username: '',
+    email: '',
+    phone: '',
     avatar: { face: '😊', accessory: null, background: 'default' }
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -25,10 +27,12 @@ const Profile = () => {
     backgrounds: ['default', 'forest', 'ocean', 'space', 'rainbow', 'sunset']
   }
 
-  useEffect(() => {
+useEffect(() => {
     if (userProgress && !loading) {
       setFormData({
         username: userProgress.username || '',
+        email: userProgress.email || '',
+        phone: userProgress.phone || '',
         avatar: userProgress.avatar || { face: '😊', accessory: null, background: 'default' }
       })
     }
@@ -55,7 +59,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     
-    if (!formData.username.trim()) {
+if (!formData.username.trim()) {
       toast.error('Username is required')
       return
     }
@@ -67,6 +71,16 @@ const Profile = () => {
 
     if (formData.username.length > 20) {
       toast.error('Username must be less than 20 characters')
+      return
+    }
+
+    if (formData.email && !formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      toast.error('Please enter a valid email address')
+      return
+    }
+
+    if (formData.phone && !formData.phone.match(/^[\d\s\-\+\(\)]+$/)) {
+      toast.error('Please enter a valid phone number')
       return
     }
 
@@ -84,9 +98,11 @@ const Profile = () => {
     }
   }
 
-  const handleCancel = () => {
+const handleCancel = () => {
     setFormData({
       username: userProgress.username || '',
+      email: userProgress.email || '',
+      phone: userProgress.phone || '',
       avatar: userProgress.avatar || { face: '😊', accessory: null, background: 'default' }
     })
     setIsEditing(false)
@@ -150,6 +166,34 @@ const Profile = () => {
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                       placeholder="Enter your username"
                       maxLength={20}
+                    />
+</div>
+
+                  {/* Email */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      placeholder="Enter your email address"
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      placeholder="Enter your phone number"
                     />
                   </div>
 
