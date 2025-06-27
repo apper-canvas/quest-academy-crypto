@@ -54,11 +54,24 @@ export const updateUserProgress = async (userId, updates) => {
       updated.achievements.push(updates.achievement)
     }
   }
-  
-  if (updates.unlockedItem) {
+if (updates.unlockedItem) {
     if (!updated.unlockedItems) updated.unlockedItems = []
     if (!updated.unlockedItems.includes(updates.unlockedItem)) {
       updated.unlockedItems.push(updates.unlockedItem)
+    }
+  }
+  
+  if (updates.specialItem) {
+    if (!updated.unlockedItems) updated.unlockedItems = []
+    if (!updated.unlockedItems.includes(updates.specialItem)) {
+      updated.unlockedItems.push(updates.specialItem)
+    }
+  }
+  
+  if (updates.challengeCompleted) {
+    if (!updated.completedChallenges) updated.completedChallenges = []
+    if (!updated.completedChallenges.includes(updates.challengeCompleted)) {
+      updated.completedChallenges.push(updates.challengeCompleted)
     }
   }
   

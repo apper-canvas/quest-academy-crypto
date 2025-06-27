@@ -1,26 +1,27 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
-import GameCard from '@/components/molecules/GameCard'
-import ReadingGame from '@/components/organisms/ReadingGame'
-import Button from '@/components/atoms/Button'
-import Card from '@/components/atoms/Card'
-import Loading from '@/components/ui/Loading'
-import Error from '@/components/ui/Error'
-import Empty from '@/components/ui/Empty'
-import ApperIcon from '@/components/ApperIcon'
-import { getReadingActivities } from '@/services/api/activityService'
-import { useUserProgress } from '@/hooks/useUserProgress'
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import DailyChallengeModal from "@/components/molecules/DailyChallengeModal";
+import { useUserProgress } from "@/hooks/useUserProgress";
+import { getReadingActivities } from "@/services/api/activityService";
+import ApperIcon from "@/components/ApperIcon";
+import GameCard from "@/components/molecules/GameCard";
+import ReadingGame from "@/components/organisms/ReadingGame";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/Error";
+import Card from "@/components/atoms/Card";
+import Button from "@/components/atoms/Button";
 
 const ReadingWorld = () => {
-  const [activities, setActivities] = useState([])
+const [activities, setActivities] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [selectedActivity, setSelectedActivity] = useState(null)
   const [gameResults, setGameResults] = useState(null)
+  const [showChallenge, setShowChallenge] = useState(false)
   const navigate = useNavigate()
   const { userProgress } = useUserProgress()
-  
   useEffect(() => {
     loadActivities()
   }, [])
@@ -157,15 +158,26 @@ const ReadingWorld = () => {
       <div className="absolute bottom-40 left-1/4 w-40 h-40 bg-pink-300/20 rounded-full blur-3xl" />
       <div className="absolute top-1/3 right-1/4 w-32 h-32 bg-red-300/20 rounded-full blur-2xl" />
       
-      <div className="container mx-auto px-4 py-12 relative z-10">
+<div className="container mx-auto px-4 py-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="font-display text-4xl md:text-5xl text-gray-800 mb-4">
-            🌈 Reading Rainbow
-          </h1>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <h1 className="font-display text-4xl md:text-5xl text-gray-800">
+              🌈 Reading Rainbow
+            </h1>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowChallenge(true)}
+              className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full font-bold shadow-lg flex items-center gap-2 text-sm"
+            >
+              <ApperIcon name="Star" size={16} className="sparkle-animation" />
+              Daily Challenge
+            </motion.button>
+          </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Journey through magical stories and improve your reading skills with every adventure!
           </p>
@@ -197,8 +209,14 @@ const ReadingWorld = () => {
             <ApperIcon name="ArrowLeft" size={18} className="mr-2" />
             Back to World Map
           </Button>
-        </div>
+</div>
       </div>
+      
+      <DailyChallengeModal
+        isOpen={showChallenge}
+        onClose={() => setShowChallenge(false)}
+        world="reading"
+      />
     </div>
   )
 }
