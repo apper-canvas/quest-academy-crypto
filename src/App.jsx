@@ -6,19 +6,20 @@ import MathWorld from '@/components/pages/MathWorld'
 import ReadingWorld from '@/components/pages/ReadingWorld'
 import AvatarShop from '@/components/pages/AvatarShop'
 import Progress from '@/components/pages/Progress'
+import ParentDashboard from '@/components/pages/ParentDashboard'
 import Achievements from '@/components/pages/Achievements'
-
 function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-purple-50 to-pink-50">
       <Header />
-      <main className="pb-20">
+<main className="pb-20">
         <Routes>
           <Route path="/" element={<WorldMap />} />
           <Route path="/math" element={<MathWorld />} />
           <Route path="/reading" element={<ReadingWorld />} />
           <Route path="/shop" element={<AvatarShop />} />
           <Route path="/progress" element={<Progress />} />
+          <Route path="/parent-dashboard" element={<ParentDashboard />} />
           <Route path="/achievements" element={<Achievements />} />
         </Routes>
       </main>

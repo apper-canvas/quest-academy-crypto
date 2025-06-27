@@ -11,13 +11,13 @@ const Header = () => {
   const location = useLocation()
   const { userProgress } = useUserProgress()
   
-  const navItems = [
+const navItems = [
     { path: '/', label: 'World Map', icon: 'Map' },
     { path: '/progress', label: 'My Progress', icon: 'TrendingUp' },
+    { path: '/parent-dashboard', label: 'Parent Dashboard', icon: 'BarChart3' },
     { path: '/shop', label: 'Avatar Shop', icon: 'ShoppingBag' },
     { path: '/achievements', label: 'Achievements', icon: 'Trophy' }
   ]
-  
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
