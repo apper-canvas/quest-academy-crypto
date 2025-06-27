@@ -11,7 +11,7 @@ import Achievements from '@/components/pages/Achievements'
 import Profile from '@/components/pages/Profile'
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-blue-50 to-cyan-50">
       <Header />
 <main className="pb-20">
         <Routes>
