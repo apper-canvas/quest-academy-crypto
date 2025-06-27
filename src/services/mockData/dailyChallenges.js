@@ -60,3 +60,5 @@ const dailyChallengesData = [
 ]
 
 export default dailyChallengesData
+export { dailyChallengesData }
+export default dailyChallengesData
