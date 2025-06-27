@@ -10,10 +10,11 @@ const Badge = ({
 }) => {
   const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-full'
   
-  const variants = {
+const variants = {
     primary: 'bg-gradient-to-r from-primary to-secondary text-white',
     accent: 'bg-gradient-to-r from-accent to-orange-400 text-white',
     success: 'bg-gradient-to-r from-success to-green-500 text-white',
+    warning: 'bg-gradient-to-r from-yellow-400 to-orange-400 text-white',
     secondary: 'bg-gray-100 text-gray-700',
     outline: 'border-2 border-primary text-primary bg-white'
   }
